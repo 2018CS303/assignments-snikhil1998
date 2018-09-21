@@ -1,14 +1,23 @@
 Problem Statement
-Dynamic Allocation of Linux systems for users.
+
+    • Dynamic Allocation of Linux systems for users.
+    
     • Each user should have independent Linux System.
+    
     • Specific training environment should be created in Container.
+    
     • User should not allow to access other containers/images.
+    
     • User should not allow to access docker command.
+    
     • Monitor participants containers.
+    
     • Debug/live demo for the participants if they have any doubts/bug in running applications.
+    
     • Automate container creation and deletion.
 
 Creating a training environment
+
     1. We will be using ubuntu container.
     2. Run the command
        	docker pull ubuntu
