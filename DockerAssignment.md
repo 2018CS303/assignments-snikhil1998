@@ -13,15 +13,25 @@
 ## Creating a training environment
 - We will be using `ubuntu` container.
 - Run the command
-`docker pull ubuntu`
+```
+docker pull ubuntu
+```
 - Then run the command
-`docker run -it --name traincont -it ubuntu /bin/bash`
+
+```
+docker run -it --name traincont -it ubuntu /bin/bash
+```
+
   to create a new ubuntu container.
 - Type the command `exit` to exit the shell.
 
 ## Allocating container for each user
 - To create a container for a single user with user id `usernamefoo` the command is
-`docker create -it --name usernamefoo training:v1 /bin/bash`
+
+```
+docker create -it --name usernamefoo training:v1 /bin/bash
+```
+
 - This creates a container with name of `usernamefoo` from the image `training:v1`, but doesn't start the container.
 - Allocation of containers can be automated when a file with the list of users is given. Let the file containing user ids be `userslist`:
 
@@ -58,8 +68,12 @@ done < "$file"
 ## Using an allocated container
 - Now that the container has been allocated for each user we need to start it and attach the container (attach local standard input, output, and error streams to the running container).
 - The container for user with id `usernamefoo` can be used by running the following commands:
-`docker start usernamefoo # Starts container usernamefoo`
-`docker attach usernamefoo # Attaches local stdin, stdout and stderr to usernamefoo`
+
+```
+docker start usernamefoo # Starts container usernamefoo
+docker attach usernamefoo # Attaches local stdin, stdout and stderr to usernamefoo
+```
+
   Run the above commands so that the user gets access to the shell of his system.
 
 ## Safety of containers
@@ -67,7 +81,12 @@ The above commands isolate the containers completely. A user cannot access anoth
 
 ## Monitoring the containers
 - To monitor the usage container `usernamefoo`, run the command
-`docker stats usernamefoo`
+
+```
+docker stats usernamefoo
+```
+
+The output is
 
 ```
 CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS
@@ -75,13 +94,23 @@ CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   
 ```
 
 - To view the logs of container `usernamefoo`, run the command
-`docker logs usernamefoo`
+
+```
+docker logs usernamefoo
+```
+
 - To view the realtime logs of container `usernamefoo`, run the command
-`docker logs -f usernamefoo`
+
+```
+docker logs -f usernamefoo
+```
 
 ## Deleting containers
 To remove stopped container `usernamefoo`, run
-`docker rm usernamefoo`
+
+```
+docker rm usernamefoo
+```
 To remove multiple stopped containers automatically, run the `deallocate` script given a file with the list of usernames:
 ```bash
 #!/bin/sh
