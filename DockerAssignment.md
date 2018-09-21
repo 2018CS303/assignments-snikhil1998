@@ -1,15 +1,15 @@
 Problem Statement
-    • Dynamic Allocation of Linux systems for users.
-    • Each user should have independent Linux System.
-    • Specific training environment should be created in Container.
-    • User should not allow to access other containers/images.
-    • User should not allow to access docker command.
-    • Monitor participants containers.
-    • Debug/live demo for the participants if they have any doubts/bug in running applications.
-    • Automate container creation and deletion.
+
+• Dynamic Allocation of Linux systems for users
+• Each user should have independent Linux System
+• Specific training environment should be created in Container
+• User should not allow to access other containers/images
+• User should not allow to access docker command
+• Monitor participants containers
+• Debug/live demo for the participants if they have any doubts/bug in running applications.
+• Automate container creation and deletion.
 
 Creating a training environment
-
     1. We will be using ubuntu container.
     2. Run the command
        	docker pull ubuntu
@@ -22,13 +22,13 @@ Allocating container for each user
     1. To create a container for a single user with user id usernamefoo the command is
        	docker create -it --name abc training:v1 /bin/bash
     2. This creates a container with name of usernamefoo from the image training:v1, but doesn't start the container.
-    3. Allocation of containers can be automated when a file with the list of users is given. Let the file containing user ids be users
+    3. Allocation of containers can be automated when a file with the list of users is given. Let the file containing user ids be users:
        	user01
        	user02
        	user03
-       	user04
-              
+       	user04       
        Script for allocating containers to users:
+
        #!/bin/sh
        
        file=$1
@@ -45,7 +45,8 @@ Allocating container for each user
        	container_id="$(docker create -it --name $user training:v1 /bin/bash)"
        	echo "$user: $container_id"
        done < "$file"
-    4. We can run the command allocate userfiles to allocate a container for every user id in userfiles.
+
+       4. We can run the command allocate userfiles to allocate a container for every user id in userfiles.
 
 Using an allocated container
     1. Now that the container has been allocated for each user we need to start it and attach the container (attach local standard input, output, and error streams to the running container).
