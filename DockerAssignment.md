@@ -1,5 +1,5 @@
 Problem Statement
-    • Dynamic Allocation of Linux systems for users.
+Dynamic Allocation of Linux systems for users.
     • Each user should have independent Linux System.
     • Specific training environment should be created in Container.
     • User should not allow to access other containers/images.
